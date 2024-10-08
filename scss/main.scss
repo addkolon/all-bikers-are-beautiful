@@ -1,5 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Odibee+Sans&display=swap");
+
 // Color Vars
 $primary-color: #f27400;
+$base-color: #1f1c22;
+
+// Typography
+$base-font: "Odibee Sans", Helvetica, Arial, sans-serif;
+$heading-font: "Codystar", sans-serif;
 
 * {
   margin: 0;
@@ -7,9 +14,28 @@ $primary-color: #f27400;
   box-sizing: border-box;
 }
 
+body {
+  font-family: $base-font;
+  color: $base-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font;
+  font-weight: 300;
+}
+
+a {
+  color: $base-color;
+}
+
 // Header
 header {
-  border: 1px solid red;
+  // border: 1px solid red;
 
   padding: 3rem 5rem;
   display: flex;
@@ -52,13 +78,77 @@ header {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+      transition: all 0.2s ease;
 
       &.line-1 {
-        top: 0
+        top: 0;
       }
 
       &.line-2 {
         bottom: 0;
+      }
+    }
+
+    &.active {
+      .line-1 {
+        transform: translateY(5px) translateX(-50%) rotate(45deg);
+      }
+
+      .line-2 {
+        transform: translateY(-5px) translateX(-50%) rotate(-45deg);
+      }
+    }
+  }
+}
+
+.main-nav {
+  position: absolute;
+  left: 7rem;
+  bottom: -200px;
+  // border: 1px solid green;
+  border-left: 1px solid $primary-color;
+  animation: main-nav-animation 1s 0.5s ease forwards; // Animationen tar 1.5s sammanlagt
+  overflow: hidden;
+  // background-color: greenyellow;
+
+  @keyframes main-nav-animation {
+    to {
+      bottom: 0;
+    }
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateX(-100%);
+    // border: 1px solid magenta;
+
+    animation: main-nav-ul-animation 1s 2s ease forwards; // Om jag vill att denna animationen skall triggas efter så måste jag ha en delay på minst 1.5s
+
+    @keyframes main-nav-ul-animation {
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    li {
+      a {
+        text-decoration: none;
+        padding: 2rem 8rem;
+        display: inline-block;
+        cursor: pointer;
+
+        font-size: 14px;
+        letter-spacing: 0.75em;
+        text-transform: uppercase;
+
+        &:hover {
+          color: white;
+          background-color: rgba($color: white, $alpha: 0.15);
+          backdrop-filter: blur(8px);
+        }
       }
     }
   }
