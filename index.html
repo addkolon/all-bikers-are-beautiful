@@ -23,7 +23,7 @@
         <div class="line-2"></div>
       </div>
     </header>
-    <main>
+    <main class="hero">
       <h1>
         All <span>Bikers</span><br>
         are Beautiful
@@ -34,6 +34,7 @@
         </a>
       </div>
     </main>
+    <!-- Animated Main Nav -->
     <nav class="main-nav">
       <ul>
         <li><a href="">Activism</a></li>
@@ -41,16 +42,31 @@
         <li><a href="">About</a></li>
       </ul>
     </nav>
+    <!-- BG Video -->
     <video 
       src="assets/media/bg_video.mp4"
       muted
       autoplay
       loop
     ></video>
-    </video>
+    <!-- Slide in menu - RIGHT -->
+    <div id="side-menu">
+      <h2>Log in</h2>
+      <div class="divider"></div>
+      <form action="">
+        <input type="email" name="" id="" placeholder="Fill in your e-mail address" required>
+        <input type="password" name="" id="" placeholder="Fill in your password" required>
+        <input type="submit" value="Log in">
+      </form>
+    </div>
     <script>
-      document.getElementById("hamburger-menu").onclick = function () {
+      
+      const sideMenu = document.getElementById("side-menu");
+      const hamburgerMenu = document.getElementById("hamburger-menu")
+
+      hamburgerMenu.onclick = function () {
         this.classList.toggle("active")
+        sideMenu.classList.toggle("active")
       }
     </script>
   </body>

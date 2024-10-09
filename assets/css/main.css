@@ -8,6 +8,7 @@
 body {
   font-family: "Odibee Sans", Helvetica, Arial, sans-serif;
   color: #1f1c22;
+  overflow: hidden;
 }
 
 h1,
@@ -30,9 +31,10 @@ header {
   align-items: center;
   justify-content: space-between;
   position: relative;
+  z-index: 999;
 }
 header .logo a img {
-  animation: logoRotate 10s infinite linear;
+  animation: logoRotate 2s infinite ease;
 }
 @keyframes logoRotate {
   from {
@@ -68,6 +70,24 @@ header .menu-icon.active .line-1 {
 }
 header .menu-icon.active .line-2 {
   transform: translateY(-5px) translateX(-50%) rotate(-45deg);
+}
+
+main.hero {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-left: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+main.hero h1 {
+  font-size: 7vw;
+}
+main.hero h1 span {
+  color: #f27400;
 }
 
 .main-nav {
@@ -121,4 +141,59 @@ video {
   -o-object-fit: cover;
      object-fit: cover;
   z-index: -2;
+}
+
+#side-menu {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  background-color: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40vw;
+  transition: top 0.6s ease;
+}
+#side-menu.active {
+  top: 0;
+}
+#side-menu h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+#side-menu .divider {
+  width: 100%;
+  height: 1px;
+  background-color: #f27400;
+  margin: 2rem 0;
+}
+#side-menu form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#side-menu form input {
+  border: none;
+  border-bottom: 1px solid #1f1c22;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+#side-menu form input[type=submit] {
+  border: 1px solid #f27400;
+  background-color: transparent;
+  color: #f27400;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#side-menu form input[type=submit]:hover {
+  background-color: #f27400;
+  color: white;
 }/*# sourceMappingURL=main.css.map */

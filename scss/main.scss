@@ -17,6 +17,7 @@ $heading-font: "Codystar", sans-serif;
 body {
   font-family: $base-font;
   color: $base-color;
+  overflow: hidden;
 }
 
 h1,
@@ -42,12 +43,13 @@ header {
   align-items: center;
   justify-content: space-between;
   position: relative;
+  z-index: 999;
 
   // Logo
   .logo {
     a {
       img {
-        animation: logoRotate 10s infinite linear;
+        animation: logoRotate 2s infinite ease;
       }
 
       @keyframes logoRotate {
@@ -99,6 +101,37 @@ header {
       }
     }
   }
+}
+
+main.hero {
+  // Makes it cover whole screen
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  // border: 6px solid slateblue;
+
+  padding-left: 7rem;
+
+  // To be able to vertical center all content
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  // Use background to check z-index
+  // background-color: rgba($color: red, $alpha: .75);
+  // z-index: -1;
+
+  h1 {
+    font-size: 7vw;
+
+    span {
+      color: $primary-color;
+    }
+  }
+  
 }
 
 .main-nav {
@@ -163,4 +196,75 @@ video {
   height: 100dvh;
   object-fit: cover;
   z-index: -2;
+}
+
+#side-menu {
+  // Make it absolute and placed top right
+  position: absolute;
+  top: -100%;
+  left: 0;
+  //left: -410px; // Moved the width -40px to the left
+
+  // Size of menu 
+  width: 100%;
+  height: 100dvh;
+
+  // Glassmorphism effect
+  background-color: rgba($color: white, $alpha: .15);
+  backdrop-filter: blur(8px);
+
+  // Handle positions inside the menu
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40vw;
+
+  // Make it MOOOOOOOVE
+  transition: top 0.6s ease;
+
+  &.active {
+    top: 0;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background-color: $primary-color;
+    margin: 2rem 0;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    input {
+      border: none;
+      border-bottom: 1px solid $base-color;
+      background-color: rgba($color: white, $alpha: .4);
+      padding: .75rem;
+      margin-bottom: 1rem;
+
+      &[type=submit] {
+        border: 1px solid $primary-color;
+        background-color: transparent;
+        color: $primary-color;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: $primary-color;
+          color: white;
+        }
+      }
+    }
+  }
 }
